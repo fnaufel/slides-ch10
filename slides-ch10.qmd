@@ -1,0 +1,73 @@
+---
+title: "Deep Learning"
+subtitle: "(cap. 10 de Statistical Learning, 2ed.)"
+author: Fernando Náufel
+institute: RCN, UFF
+date: 12 08 2023
+date-modified: 12 08 2023
+date-format: DD/MM/YYYY
+
+filters:
+  - roughnotation
+  - code-fullscreen
+
+format:
+  revealjs: 
+    theme: simple
+    lang: pt
+    menu:
+      numbers: true
+    slide-number: true
+    preview-links: auto
+    progress: true
+    history: false
+    touch: true
+    keyboard: true
+    mouse-wheel: false
+    hide-inactive-cursor: true
+    hide-cursor-time: 500
+    controls: auto
+    pause: true
+    help: true
+    cap-location: bottom
+    code-copy: true
+    code-link: true
+    fig-align: center
+    link-external-icon: true
+    link-external-newwindow: true
+    execute: 
+      echo: true
+    # Se ativar embed-resources, desativar chalkboard:  
+    # embed-resources: true
+    chalkboard: 
+      theme: chalkboard
+      buttons: false
+    header-includes: |
+      <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            jax: ["input/TeX","output/HTML-CSS"],
+            displayAlign: "left"
+        });
+      </script>
+    pointer:
+      alwaysVisible: false
+      pointerSize: 20
+revealjs-plugins:
+  - pointer
+  - attribution
+  - codefocus
+---
+
+## Fonte
+
+Livro, site e YT playlist
+
+Autores
+
+
+## Introdução
+
+
+## Redes neurais de uma camada
+
+
