@@ -1,23 +1,28 @@
 ---
-title: "Deep Learning"
+title: "Deep Learning: Redes Neurais"
 subtitle: "(cap. 10 de Statistical Learning, 2ed.)"
 author: Fernando Náufel
 institute: RCN, UFF
-date: 12 08 2023
-date-modified: 12 08 2023
+date: 14 08 2023
+date-modified: 14 08 2023
 date-format: DD/MM/YYYY
 
 filters:
-  - roughnotation
   - code-fullscreen
 
 format:
   revealjs: 
     theme: simple
+    css: custom.css
+    width: 1600
+    height: 800
     lang: pt
+    incremental: true
     menu:
       numbers: true
     slide-number: true
+    center: false
+    center-title-slide: true
     preview-links: auto
     progress: true
     history: false
@@ -25,7 +30,7 @@ format:
     keyboard: true
     mouse-wheel: false
     hide-inactive-cursor: true
-    hide-cursor-time: 500
+    hide-cursor-time: 100
     controls: auto
     pause: true
     help: true
@@ -52,22 +57,103 @@ format:
     pointer:
       alwaysVisible: false
       pointerSize: 20
+
 revealjs-plugins:
   - pointer
   - attribution
   - codefocus
+  
+bibliography: bibliography.bib
 ---
 
 ## Fonte
 
-Livro, site e YT playlist
+{{< include _math.qmd >}}
 
-Autores
+Capítulo 10 de @james21:_introd_statis_learn.
+
+Playlist em <https://youtu.be/jJb2qytbcNg> (com os autores):
+
+<div style='height: 50px'></div>
+
+:::{style="width:610px; margin:auto;"}
+
+{{< video https://youtu.be/jJb2qytbcNg width="600" height="450" >}}
+
+:::
 
 
-## Introdução
+## Nesta apresentação
+
+???
 
 
-## Redes neurais de uma camada
+## História
+
+* Surgimento nos anos 1980
+
+* Esquecimento nos anos 2000
+
+* Ressurgimento nos anos 2010
+
+* Aplicações atuais:
+
+  * Classificação de vídeos e imagens
+  * Modelagem de texto
+  * Processamento de fala
+  * AI generativa
+
+
+## Rede neural de uma camada
+
+![](images/uma-camada.png){fig-alt="Rede neural de uma camada" width=90% fig-align="center"}
+
+:::{.attribution}
+Imagem: @james21:_introd_statis_learn
+:::
+
+
+## Rede neural de uma camada {.smaller}
+
+::::{.columns}
+
+:::{.column width="40%"}
+
+<div style='height: 50px'></div>
+
+![](images/uma-camada.png){fig-alt="Rede neural de uma camada"}
+
+:::
+
+:::{.column width="60%"}
+
+* $A_1 = h_1(\vet X)$
+
+* $\phantom{A_1} = h_1(X_1, X_2, X_3, X_4)$
+
+* $\phantom{A_1} = g(w_{10} + w_{11} X_1 + w_{12} X_2 + w_{13} X_3 + w_{14} X_4)$
+
+* $\phantom{A_1} = g\left(
+  w_{10} 
+  + \sum_{j=1}^p w_{1j} X_j\right)$
+  
+* $\mbox{}$
+
+* O [argumento de $g$]{.hl} é uma função [linear]{.hl} de $X_1, \ldots, X_4$,
+
+* mas [a função $g$]{.hl} é [não-linear]{.hl}.
+
+* Por exemplo, $\quad \displaystyle g(z) = \frac{e^z}{1 + e^z}\;,\quad$ chamada função [sigmóide]{.hl}.
+
+* (Se $g$ também fosse linear, estaríamos fazendo regressão linear!)
+
+:::
+
+::::
+
+
+
+
+## Referências
 
 
