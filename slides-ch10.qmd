@@ -41,7 +41,7 @@ format:
     link-external-icon: true
     link-external-newwindow: true
     execute: 
-      echo: true
+      echo: false
     # Se ativar embed-resources, desativar chalkboard:  
     # embed-resources: true
     chalkboard: 
@@ -69,6 +69,8 @@ bibliography: bibliography.bib
 ## Fonte
 
 {{< include _math.qmd >}}
+
+{{< include _libs.qmd >}}
 
 Capítulo 10 de @james21:_introd_statis_learn.
 
@@ -115,27 +117,29 @@ Imagem: @james21:_introd_statis_learn
 
 ## Rede neural de uma camada {.smaller}
 
-::::{.columns}
+:::::{.columns .nomarker}
 
-:::{.column width="40%"}
+::::{.column width="40%"}
 
 <div style='height: 50px'></div>
 
 ![](images/uma-camada.png){fig-alt="Rede neural de uma camada"}
 
-:::
+::::
 
-:::{.column width="60%"}
+::::{.column width="60%"}
+
+:::{.incremental}
 
 * $A_1 = h_1(\vet X)$
 
 * $\phantom{A_1} = h_1(X_1, X_2, X_3, X_4)$
 
-* $\phantom{A_1} = g(w_{10} + w_{11} X_1 + w_{12} X_2 + w_{13} X_3 + w_{14} X_4)$
+* $\phantom{A_1} = g\;(w_{10} + w_{11} X_1 + w_{12} X_2 + w_{13} X_3 + w_{14} X_4)$
 
 * $\phantom{A_1} = g\left(
   w_{10} 
-  + \sum_{j=1}^p w_{1j} X_j\right)$
+  + \sum_{j=1}^4 w_{1j} X_j\right)$
   
 * $\mbox{}$
 
@@ -151,9 +155,173 @@ Imagem: @james21:_introd_statis_learn
 
 ::::
 
+:::::
 
+
+## Rede neural de uma camada {.smaller}
+
+:::::{.columns .nomarker}
+
+::::{.column width="40%"}
+
+<div style='height: 50px'></div>
+
+![](images/uma-camada.png){fig-alt="Rede neural de uma camada"}
+
+::::
+
+::::{.column width="60%"}
+
+:::{.nonincremental}
+
+* $A_i = h_i(\vet X)$
+
+* $\phantom{A_i} = h_i(X_1, X_2, X_3, X_4)$
+
+* $\phantom{A_i} = g\;(w_{i0} + w_{i1} X_1 + w_{i2} X_2 + w_{i3} X_3 + w_{i4} X_4)$
+
+* $\phantom{A_i} = g\left(
+  w_{i0} 
+  + \sum_{j=1}^4 w_{ij} X_j\right)$
+  
+* $\mbox{}$
+
+:::
+
+::: {.incremental}
+
+* $Y = f(\vet X)$
+
+* $\phantom{Y} = f(A_1, A_2, A_3, A_4, A_5)$
+
+* $\phantom{Y} = \beta_0 + \beta_1 A_1 + \beta_2 A_2 + \beta_3 A_3 + \beta_4 A_4 + \beta_5 A_5$
+
+* $\phantom{Y} = \beta_0 + \sum_{k=1}^5 \beta_k A_k$
+
+:::
+
+::::
+
+:::::
+
+
+## Rede neural de uma camada {.smaller}
+
+:::::{.columns .nomarker}
+
+::::{.column width="40%"}
+
+<div style='height: 50px'></div>
+
+![](images/uma-camada.png){fig-alt="Rede neural de uma camada"}
+
+::::
+
+::::{.column width="60%"}
+
+:::{.nonincremental}
+
+* $A_i = g\left(w_{i0} + \sum_{j=1}^4 w_{ij} X_j\right)$
+  
+* $Y = \beta_0 + \sum_{k=1}^5 \beta_k A_k$
+
+:::
+
+:::{.incremental}
+
+* Terminologia:
+
+  * [Camada de entrada:]{.hl} $\, X_j,\, 1 \leq j \leq 4$
+  * [Camada oculta:]{.hl} $\, A_i,\, 1 \leq i \leq 5$
+  * [Camada de saída]{.hl}
+  * [Função de ativação:]{.hl} $\, g(\,)$
+  * [Pesos (ou parâmetros):]{.hl}
+    * $w_{ij},\, 1 \leq i \leq 5,\, 0 \leq j \leq 4\,\,$ ($25$ parâmetros)
+    * $\beta_k,\, 0 \leq k \leq 5\,\,$ ($6$ parâmetros)
+
+:::
+
+::::
+
+:::::
+
+
+## Exemplos de funções de ativação
+
+:::::{.columns}
+
+::::{.column width="50%"}
+
+:::{.callout-note appearance="minimal"}
+
+[Sigmóide:]{.hl}
+
+```{r}
+ggplot() +
+  stat_function(
+    fun = function(z) exp(z) / (1 + exp(z)),
+    xlim = c(-5, 5)
+  ) +
+  scale_x_continuous(breaks = seq(-5, 5, 1)) + 
+  labs(
+    y = NULL,
+    x = 'z'
+  )
+```
+ 
+$$
+g(z) = \frac{e^z}{1 + e^z} = \frac{1}{1 + e^{-z}}
+$$
+
+:::
+
+::::
+
+::::{.column width="50%"}
+
+:::{.callout-note appearance="minimal"}
+
+[ReLU (Rectified Linear Unit):]{.hl}
+
+```{r}
+ggplot() +
+  stat_function(
+    fun = function(z) ifelse(z < 0, 0, z),
+    xlim = c(-5, 5)
+  ) +
+  scale_x_continuous(breaks = seq(-5, 5, 1)) + 
+  labs(
+    y = NULL,
+    x = 'z'
+  )
+```
+ 
+$$
+g(z) = \begin{cases}
+  0 &\text{ se } z < 0 \\
+  z &\text{ se } z \geq 0 \\
+\end{cases}
+$$
+
+:::
+
+::::
+
+:::::
+
+
+## Treinando e avaliando a rede neural
+
+???
+
+
+## Exemplo
+
+???
 
 
 ## Referências
+
+<div style='height: 100px'></div>
 
 

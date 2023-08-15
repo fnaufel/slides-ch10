@@ -1,6 +1,6 @@
 
-/* Do not show markers in unordered lists inside columns */
-.column ul {
+/* Do not show markers in unordered lists */
+.nomarker ul {
   list-style-type: none;
 }
 
