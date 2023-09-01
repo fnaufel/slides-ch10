@@ -14,7 +14,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.361">
 <meta name="author" content="Fernando Náufel">
-<title>Deep Learning: Redes Neurais</title>
+<title>Redes Neurais</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -358,8 +358,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center"><h1 class="title">Deep Learning: Redes Neurais</h1>
-  <p class="subtitle">(cap. 10 de Statistical Learning, 2ed.)</p>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Redes Neurais</h1>
+  <p class="subtitle">Primeiras Noções</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -377,6 +377,9 @@ Fernando Náufel
 <div class="hidden">
 
 </div>
+<div style="height: 50px">
+
+</div>
 <p>Capítulo 10 de <span class="citation" data-cites="james21:_introd_statis_learn">James et al. (<a href="#/referências" role="doc-biblioref" onclick="">2021</a>)</span>.</p>
 <p>Playlist em <a href="https://youtu.be/jJb2qytbcNg" class="uri">https://youtu.be/jJb2qytbcNg</a> (com os autores):</p>
 <div style="height: 50px">
@@ -386,7 +389,16 @@ Fernando Náufel
 <iframe data-external="1" src="https://www.youtube.com/embed/jJb2qytbcNg" width="600" height="450" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 </div>
 </section><section id="nesta-apresentação" class="slide level2"><h2>Nesta apresentação</h2>
-<p>???</p>
+<div>
+<ul>
+<li><p>História</p></li>
+<li><p>Rede neural de uma camada</p></li>
+<li><p>Terminologia</p></li>
+<li><p>Funções de ativação</p></li>
+<li><p>ReLU</p></li>
+<li><p>Pequeno exemplo</p></li>
+</ul>
+</div>
 </section><section id="história" class="slide level2"><h2>História</h2>
 <ul>
 <li class="fragment"><p>Surgimento nos anos 1980</p></li>
@@ -395,10 +407,10 @@ Fernando Náufel
 <li class="fragment">
 <p>Aplicações atuais:</p>
 <ul>
-<li class="fragment">Classificação de vídeos e imagens</li>
-<li class="fragment">Modelagem de texto</li>
+<li class="fragment">Classificação de texto, vídeos e imagens</li>
 <li class="fragment">Processamento de fala</li>
-<li class="fragment">AI generativa</li>
+<li class="fragment">IA generativa</li>
+<li class="fragment"><span class="math inline">\(\ldots\)</span></li>
 </ul>
 </li>
 </ul></section><section id="rede-neural-de-uma-camada" class="slide level2"><h2>Rede neural de uma camada</h2>
@@ -452,6 +464,7 @@ Fernando Náufel
 <li class="fragment"><p><span class="math inline">\(\phantom{Y} = f(A_1, A_2, A_3, A_4, A_5)\)</span></p></li>
 <li class="fragment"><p><span class="math inline">\(\phantom{Y} = \beta_0 + \beta_1 A_1 + \beta_2 A_2 + \beta_3 A_3 + \beta_4 A_4 + \beta_5 A_5\)</span></p></li>
 <li class="fragment"><p><span class="math inline">\(\phantom{Y} = \beta_0 + \sum_{k=1}^5 \beta_k A_k\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\phantom{Y ={}}\)</span> (mas <span class="math inline">\(f\)</span> também pode ser uma função <span class="hl">não-linear</span>.)</p></li>
 </ul>
 </div>
 </div>
@@ -513,7 +526,7 @@ Fernando Náufel
 </div>
 </div>
 <p><span class="math display">\[
-g(z) = \frac{e^z}{1 + e^z} = \frac{1}{1 + e^{-z}}
+\quad g(z) \quad=\quad \frac{e^z}{1 + e^z} \quad=\quad \frac{1}{1 + e^{-z}}
 \]</span></p>
 </div>
 </div>
@@ -529,21 +542,41 @@ g(z) = \frac{e^z}{1 + e^z} = \frac{1}{1 + e^{-z}}
 </div>
 </div>
 <p><span class="math display">\[
-g(z) = \begin{cases}
+\quad g(z) \quad=\quad \begin{cases}
   0 &amp;\text{ se } z &lt; 0 \\
   z &amp;\text{ se } z \geq 0 \\
 \end{cases}
+\quad=\quad \max(0, z)
 \]</span></p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section><section id="treinando-e-avaliando-a-rede-neural" class="slide level2"><h2>Treinando e avaliando a rede neural</h2>
+</section><section id="relu-aproxima-funções-não-lineares" class="slide level2"><h2>ReLU aproxima funções não-lineares</h2>
+
+<img data-src="images/relu-exemplos1.png" class="r-stretch quarto-figure-center"></section><section id="relu-aproxima-funções-não-lineares-1" class="slide level2"><h2>ReLU aproxima funções não-lineares</h2>
+
+<img data-src="images/relu-exemplos2.png" class="r-stretch quarto-figure-center"></section><section id="relu-aproxima-funções-não-lineares-2" class="slide level2"><h2>ReLU aproxima funções não-lineares</h2>
+
+<img data-src="images/relu-exemplos3.png" class="r-stretch quarto-figure-center"></section><section id="relu-aproxima-funções-não-lineares-3" class="slide level2"><h2>ReLU aproxima funções não-lineares</h2>
+
+<img data-src="images/relu-exemplos4.png" class="r-stretch quarto-figure-center"></section><section id="relu-aproxima-funções-não-lineares-4" class="slide level2"><h2>ReLU aproxima funções não-lineares</h2>
+
+<img data-src="images/relu-exemplos5.png" class="r-stretch quarto-figure-center"></section><section id="relu-aproxima-funções-não-lineares-5" class="slide level2"><h2>ReLU aproxima funções não-lineares</h2>
+
+<img data-src="images/relu-exemplos5a.png" class="r-stretch quarto-figure-center"></section><section id="relu-aproxima-funções-não-lineares-6" class="slide level2"><h2>ReLU aproxima funções não-lineares</h2>
+
+<img data-src="images/relu-exemplos6.png" class="r-stretch quarto-figure-center"></section><section id="relu-aproxima-funções-não-lineares-7" class="slide level2"><h2>ReLU aproxima funções não-lineares</h2>
+
+<img data-src="images/relu-exemplos7.png" class="r-stretch quarto-figure-center"></section><section id="pequeno-exemplo" class="slide level2"><h2>Pequeno exemplo</h2>
 <p>???</p>
-</section><section id="exemplo" class="slide level2"><h2>Exemplo</h2>
-<p>???</p>
-</section><section id="referências" class="slide level2 smaller scrollable"><h2>Referências</h2>
+<ul>
+<li class="fragment"><p>Vetores <span class="math inline">\((X_1, X_2)\)</span> e <span class="math inline">\((X_3, X_4)\)</span>.</p></li>
+<li class="fragment"><p>Determinante da matriz <span class="math inline">\(2 \times 2\)</span>?</p></li>
+<li class="fragment"><p>Produto escalar?</p></li>
+<li class="fragment"><p>Cosseno do ângulo?</p></li>
+</ul></section><section id="referências" class="slide level2 smaller scrollable"><h2>Referências</h2>
 <div style="height: 100px">
 
 </div>

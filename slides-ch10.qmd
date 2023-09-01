@@ -1,10 +1,10 @@
 ---
-title: "Deep Learning: Redes Neurais"
-subtitle: "(cap. 10 de Statistical Learning, 2ed.)"
+title: "Redes Neurais"
+subtitle: "Primeiras Noções"
 author: Fernando Náufel
 institute: RCN, UFF
 date: 14 08 2023
-date-modified: 14 08 2023
+date-modified: 01 09 2023
 date-format: DD/MM/YYYY
 
 filters:
@@ -72,6 +72,8 @@ bibliography: bibliography.bib
 
 {{< include _libs.qmd >}}
 
+<div style='height: 50px'></div>
+
 Capítulo 10 de @james21:_introd_statis_learn.
 
 Playlist em <https://youtu.be/jJb2qytbcNg> (com os autores):
@@ -87,7 +89,21 @@ Playlist em <https://youtu.be/jJb2qytbcNg> (com os autores):
 
 ## Nesta apresentação
 
-???
+::: {.nonincremental}
+
+* História
+
+* Rede neural de uma camada
+
+* Terminologia
+
+* Funções de ativação
+
+* ReLU
+
+* Pequeno exemplo
+
+:::
 
 
 ## História
@@ -100,10 +116,10 @@ Playlist em <https://youtu.be/jJb2qytbcNg> (com os autores):
 
 * Aplicações atuais:
 
-  * Classificação de vídeos e imagens
-  * Modelagem de texto
+  * Classificação de texto, vídeos e imagens
   * Processamento de fala
-  * AI generativa
+  * IA generativa
+  * $\ldots$
 
 
 ## Rede neural de uma camada
@@ -198,6 +214,8 @@ Imagem: @james21:_introd_statis_learn
 
 * $\phantom{Y} = \beta_0 + \sum_{k=1}^5 \beta_k A_k$
 
+* $\phantom{Y ={}}$ (mas $f$ também pode ser uma função [não-linear]{.hl}.)
+
 :::
 
 ::::
@@ -270,7 +288,7 @@ ggplot() +
 ```
  
 $$
-g(z) = \frac{e^z}{1 + e^z} = \frac{1}{1 + e^{-z}}
+\quad g(z) \quad=\quad \frac{e^z}{1 + e^z} \quad=\quad \frac{1}{1 + e^{-z}}
 $$
 
 :::
@@ -297,10 +315,11 @@ ggplot() +
 ```
  
 $$
-g(z) = \begin{cases}
+\quad g(z) \quad=\quad \begin{cases}
   0 &\text{ se } z < 0 \\
   z &\text{ se } z \geq 0 \\
 \end{cases}
+\quad=\quad \max(0, z)
 $$
 
 :::
@@ -310,14 +329,50 @@ $$
 :::::
 
 
-## Treinando e avaliando a rede neural
+## ReLU aproxima funções não-lineares
+
+![](images/relu-exemplos1.png){fig-align="center"}
+
+## ReLU aproxima funções não-lineares
+
+![](images/relu-exemplos2.png){fig-align="center"}
+
+## ReLU aproxima funções não-lineares
+
+![](images/relu-exemplos3.png){fig-align="center"}
+
+## ReLU aproxima funções não-lineares
+
+![](images/relu-exemplos4.png){fig-align="center"}
+
+## ReLU aproxima funções não-lineares
+
+![](images/relu-exemplos5.png){fig-align="center"}
+
+## ReLU aproxima funções não-lineares
+
+![](images/relu-exemplos5a.png){fig-align="center"}
+
+## ReLU aproxima funções não-lineares
+
+![](images/relu-exemplos6.png){fig-align="center"}
+
+## ReLU aproxima funções não-lineares
+
+![](images/relu-exemplos7.png){fig-align="center"}
+
+
+## Pequeno exemplo
 
 ???
 
+* Vetores $(X_1, X_2)$ e $(X_3, X_4)$.
 
-## Exemplo
+* Determinante da matriz $2 \times 2$?
 
-???
+* Produto escalar?
+
+* Cosseno do ângulo?
 
 
 ## Referências
