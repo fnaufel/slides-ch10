@@ -1,5 +1,8 @@
 
 library(tidyverse)
+library(tidymodels)
+tidymodels_prefer()
+
 library(keras)
 library(tfruns)
 library(scales)
@@ -28,29 +31,36 @@ dados <- tibble(
 
 # Particionar -------------------------------------------------------------
 
-n_dados <- nrow(dados)
+# Não é preciso particionar aqui. Usar todos os dados no treino.
 
-prop_treino <- .8
-n_treino <- (n_dados * prop_treino) %>% round(0)
+# dados_split <- dados %>% initial_split()
+# 
+# df_treino <- training(dados_split)
+# df_teste <- testing(dados_split)
 
-dados_treino <- 
-  dados[1:n_treino, 'x'] %>% as.matrix()
+# dados_treino <- df_treino %>% pull(x) %>% as.matrix()
+# metas_treino <- df_treino %>% pull(y) %>% as.matrix()
+# 
+# dados_teste <- df_teste %>% pull(x) %>% as.matrix()
+# metas_teste <- df_teste %>% pull(y) %>% as.matrix()
 
-metas_treino <- 
-  dados[1:n_treino, 'y'] %>% as.matrix()
-
-dados_teste <- 
-  dados[(n_treino + 1):n_dados, 'x'] %>% as.matrix()
-
-metas_teste <- 
-  dados[(n_treino + 1):n_dados, 'y'] %>% as.matrix()
+dados_treino <- dados %>% pull(x) %>% as.matrix()
+metas_treino <- dados %>% pull(y) %>% as.matrix()
 
 
 # Criar modelo ------------------------------------------------------------
 
-rede1 <- keras_model_sequential() %>% 
-  layer_dense(40, activation = 'relu', input_shape = 1) %>% 
-  layer_dense(20, activation = 'relu') %>% 
+## Duas camadas ocultas ---------------------------------------------------
+
+# rede <- keras_model_sequential() %>% 
+#   layer_dense(40, activation = 'relu', input_shape = 1) %>% 
+#   layer_dense(20, activation = 'relu') %>% 
+#   layer_dense(1)
+
+## Uma única camada oculta, com 200 ---------------------------------------
+
+rede <- keras_model_sequential() %>%
+  layer_dense(200, activation = 'relu', input_shape = 1) %>%
   layer_dense(1)
 
 
@@ -67,7 +77,7 @@ if (FLAGS$optimizer == 'rmsprop') {
   )
 }
 
-rede1 %>% 
+rede %>% 
   compile(
     optimizer = opt,
     loss = 'mse',
@@ -77,8 +87,8 @@ rede1 %>%
 
 # Treinar -----------------------------------------------------------------
 
-# TODO: Callback para salvar
-historico1 <- rede1 %>% fit(
+# TODO: Callback para salvar?
+historico <- rede %>% fit(
   dados_treino, 
   metas_treino, 
   epochs = FLAGS$epochs,
@@ -87,3 +97,4 @@ historico1 <- rede1 %>% fit(
   verbose = 0
 )
 
+  

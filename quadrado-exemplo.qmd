@@ -1,6 +1,9 @@
 ---
 title: "Exemplo de RN: função quadrática"
-format: html
+format: 
+  html:
+    toc: true
+    toc-depth: 3
 ---
 
 ```{r setup}
@@ -11,52 +14,50 @@ library(scales)
 ```
 
 
-
 # Problema
 
-???
+Implementar uma RN para computar $f(x) = x^2$ com $-100 \leq x \leq 100$.
 
 
 # Tuning
 
-## Todas até agora (por metric_val_mae)
+## Duas camadas ocultas (40, 20)
+
+### Todas até agora (por metric_val_mae)
+
+Diretório com *runs* foi apagado.
 
 ```{r}
-df <- ls_runs(
-  order = 'metric_val_mae', 
-  decreasing = FALSE
-) %>% 
-  filter(completed)
+# df <- ls_runs(
+#   order = 'metric_val_mae', 
+#   decreasing = FALSE
+# ) %>% 
+#   filter(completed)
 ```
 
 ```{r}
-df %>% View()
+# df %>% 
+#   write_csv('quadrado-2c-40-20.csv')
 ```
 
 
-## Duas melhores
+### Duas melhores
 
 ```{r}
+df <- read_csv('quadrado-2c-40-20.csv')
+```
+
+```{r eval=rlang::is_interactive()}
 df %>% 
   head(2) %>% 
   compare_runs()
 ```
 
 
-## Melhor
-
-### Métricas
+### Melhor
 
 ```{r}
 melhor <- df %>% head(1)
-```
-
-```{r}
-melhor %>% run_info()
-```
-
-```{r}
-melhor %>% view_run()
 ```
 
 ```{r}
@@ -70,5 +71,107 @@ cat('Validation MAE (unscaled):', val_mae)
 ```
 
 
-### Modelo
+## Uma única camada com 200 neurônios (treinando em 3/4 dos dados)
 
+### Resultados
+
+Diretório apagado.
+
+```{r}
+# df <- ls_runs(
+#   order = 'metric_val_mae',
+#   decreasing = FALSE
+# ) %>%
+#   filter(completed)
+```
+
+```{r}
+# df %>%
+#   write_csv('quadrado-1c-200.csv')
+```
+
+
+### Duas melhores
+
+```{r}
+df <- read_csv('quadrado-1c-200.csv')
+```
+
+```{r eval=rlang::is_interactive()}
+df %>% 
+  head(2) %>% 
+  compare_runs()
+```
+
+
+### Melhor
+
+```{r}
+melhor <- df %>% head(1)
+```
+
+```{r}
+val_mae_scaled <- melhor$metric_val_mae
+
+val_mae <- val_mae_scaled %>% 
+  rescale(from = c(0, 1), to = c(0, 200))
+
+cat('Validation MAE (scaled)  :', val_mae_scaled, '\n')
+cat('Validation MAE (unscaled):', val_mae)
+```
+
+
+## Uma única camada com 200 neurônios (treinando em todos os dados)
+
+### Resultados
+
+```{r}
+df <- ls_runs(
+  order = 'metric_val_mae',
+  decreasing = FALSE
+) %>%
+  filter(completed)
+```
+
+```{r}
+df %>%
+  write_csv('quadrado-1c-200.csv')
+```
+
+
+### Duas melhores
+
+```{r}
+df <- read_csv('quadrado-1c-200.csv')
+```
+
+```{r eval=rlang::is_interactive()}
+df %>% 
+  head(2) %>% 
+  compare_runs()
+```
+
+
+### Melhor
+
+```{r}
+melhor <- df %>% head(1)
+```
+
+```{r}
+melhor %>% run_info()
+```
+
+```{r eval=rlang::is_interactive()}
+melhor %>% view_run()
+```
+
+```{r}
+val_mae_scaled <- melhor$metric_val_mae
+
+val_mae <- val_mae_scaled %>% 
+  rescale(from = c(0, 1), to = c(0, 200))
+
+cat('Validation MAE (scaled)  :', val_mae_scaled, '\n')
+cat('Validation MAE (unscaled):', val_mae)
+```

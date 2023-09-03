@@ -21,15 +21,16 @@ library(tfruns)
 
 flags_list <- list(
   optimizer = c('rmsprop'),
-  learning_rate = c(0.001),
+  learning_rate = c(0.001, 0.002, 0.004),
   momentum = c(0.001, 0.01, 0.1),
   batch_size = c(201),
-  epochs = c(500)
+  epochs = c(500, 1000, 1500)
 )
 
 execs <- tuning_run(
   'quadrado-run.R',
   flags = flags_list,
   confirm = FALSE,
-  echo = FALSE
+  echo = FALSE,
+  runs_dir = 'runs2'
 )
