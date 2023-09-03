@@ -21,13 +21,21 @@ FLAGS <- flags(
 
 # Gerar dados normalizados ------------------------------------------------
 
-minimo <- -100
-maximo <- 100
-dados <- tibble(
-  x = rescale(minimo:maximo),
-  y = rescale(x^2)
-)
+# Antes
+# minimo <- -100
+# maximo <- 100
+# dados <- tibble(
+#   x = rescale(minimo:maximo),
+#   y = rescale(x^2)
+# )
   
+# Agora
+minimo <- -50
+maximo <- 50
+dados <- tibble(
+  x = rescale(minimo:maximo, c(-1, 1)),
+  y = rescale(x^2, c(0, 1))
+)
 
 # Particionar -------------------------------------------------------------
 
@@ -57,10 +65,10 @@ metas_treino <- dados %>% pull(y) %>% as.matrix()
 #   layer_dense(20, activation = 'relu') %>% 
 #   layer_dense(1)
 
-## Uma única camada oculta, com 200 ---------------------------------------
+## Uma única camada oculta, com 100 ---------------------------------------
 
 rede <- keras_model_sequential() %>%
-  layer_dense(200, activation = 'relu', input_shape = 1) %>%
+  layer_dense(100, activation = 'relu', input_shape = 1) %>%
   layer_dense(1)
 
 
