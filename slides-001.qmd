@@ -3,8 +3,8 @@ title: "Redes Neurais"
 subtitle: "Primeiras Noções"
 author: Fernando Náufel
 institute: RCN, UFF
-date: 14 08 2023
-date-modified: 01 09 2023
+date: 03 09 2023
+date-modified: 03 09 2023
 date-format: DD/MM/YYYY
 
 filters:
@@ -18,6 +18,7 @@ format:
     height: 800
     lang: pt
     incremental: true
+    auto-stretch: false
     menu:
       numbers: true
     slide-number: true
@@ -89,8 +90,6 @@ Playlist em <https://youtu.be/jJb2qytbcNg> (com os autores):
 
 ## Nesta apresentação
 
-::: {.nonincremental}
-
 * História
 
 * Rede neural de uma camada
@@ -102,8 +101,6 @@ Playlist em <https://youtu.be/jJb2qytbcNg> (com os autores):
 * ReLU
 
 * Pequeno exemplo
-
-:::
 
 
 ## História
@@ -124,7 +121,7 @@ Playlist em <https://youtu.be/jJb2qytbcNg> (com os autores):
 
 ## Rede neural de uma camada
 
-![](images/uma-camada.png){fig-alt="Rede neural de uma camada" width=90% fig-align="center"}
+![](images/uma-camada.png){fig-alt="Rede neural de uma camada" .r-stretch fig-align="center"}
 
 :::{.attribution}
 Imagem: @james21:_introd_statis_learn
@@ -297,6 +294,8 @@ $$
 
 ::::{.column width="50%"}
 
+:::{.fragment}
+
 :::{.callout-note appearance="minimal"}
 
 [ReLU (Rectified Linear Unit):]{.hl}
@@ -324,6 +323,8 @@ $$
 
 :::
 
+:::
+
 ::::
 
 :::::
@@ -331,48 +332,63 @@ $$
 
 ## ReLU aproxima funções não-lineares
 
-![](images/relu-exemplos1.png){fig-align="center"}
+:::{.r-stack}
 
-## ReLU aproxima funções não-lineares
+![](images/relu-exemplos1.png){width=80% fig-align="center"}
 
-![](images/relu-exemplos2.png){fig-align="center"}
+![](images/relu-exemplos2.png){width=80% fig-align="center" .fragment}
 
-## ReLU aproxima funções não-lineares
+![](images/relu-exemplos3.png){width=80% fig-align="center" .fragment}
 
-![](images/relu-exemplos3.png){fig-align="center"}
+![](images/relu-exemplos4.png){width=80% fig-align="center" .fragment}
 
-## ReLU aproxima funções não-lineares
+![](images/relu-exemplos5.png){width=80% fig-align="center" .fragment}
 
-![](images/relu-exemplos4.png){fig-align="center"}
+![](images/relu-exemplos5a.png){width=80% fig-align="center" .fragment}
 
-## ReLU aproxima funções não-lineares
+![](images/relu-exemplos6.png){width=80% fig-align="center" .fragment}
 
-![](images/relu-exemplos5.png){fig-align="center"}
+![](images/relu-exemplos7.png){width=80% fig-align="center" .fragment}
 
-## ReLU aproxima funções não-lineares
-
-![](images/relu-exemplos5a.png){fig-align="center"}
-
-## ReLU aproxima funções não-lineares
-
-![](images/relu-exemplos6.png){fig-align="center"}
-
-## ReLU aproxima funções não-lineares
-
-![](images/relu-exemplos7.png){fig-align="center"}
+:::
 
 
-## Pequeno exemplo
+## Aproximando uma função quadrática
 
-???
+::::{.columns}
 
-* Vetores $(X_1, X_2)$ e $(X_3, X_4)$.
+:::{.column width=50%}
 
-* Determinante da matriz $2 \times 2$?
+<div style='height: 100px'></div>
 
-* Produto escalar?
+![](images/quadrado-rede.png){fig-align="center"}
 
-* Cosseno do ângulo?
+* Uma camada oculta
+
+* $200$ neurônios
+
+* ReLU como função de ativação
+
+:::
+
+:::{.column width=50%}
+
+![](images/quadrado-resultados.png){fig-align="center" .fragment}
+
+:::
+
+::::
+
+
+## A seguir
+
+<div style='height: 200px'></div>
+
+:::{style="text-align: center;"}
+
+Treinando redes neurais
+
+:::
 
 
 ## Referências
