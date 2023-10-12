@@ -11,10 +11,11 @@ library(scales)
 # Flags -------------------------------------------------------------------
 
 FLAGS <- flags(
+  flag_integer('size1', 200),
   flag_numeric('learning_rate', 0.001),
-  flag_numeric('momentum', 0),
-  flag_integer('batch_size', 128),
-  flag_integer('epochs', 500),
+  flag_numeric('momentum', 0.1),
+  flag_integer('batch_size', 201),
+  flag_integer('epochs', 1500),
   flag_string('optimizer', 'rmsprop')
 )
 
@@ -30,8 +31,8 @@ FLAGS <- flags(
 # )
   
 # Agora
-minimo <- -50
-maximo <- 50
+minimo <- -100
+maximo <- 100
 dados <- tibble(
   x = rescale(minimo:maximo, c(-1, 1)),
   y = rescale(x^2, c(0, 1))
@@ -65,10 +66,10 @@ metas_treino <- dados %>% pull(y) %>% as.matrix()
 #   layer_dense(20, activation = 'relu') %>% 
 #   layer_dense(1)
 
-## Uma única camada oculta, com 100 ---------------------------------------
+## 3 camadas oculta, com 100 ---------------------------------------
 
 rede <- keras_model_sequential() %>%
-  layer_dense(100, activation = 'relu', input_shape = 1) %>%
+  layer_dense(FLAGS$size1, activation = 'relu', input_shape = 1) %>%
   layer_dense(1)
 
 
@@ -104,5 +105,6 @@ historico <- rede %>% fit(
   validation_split = 0.2,
   verbose = 0
 )
+
 
   

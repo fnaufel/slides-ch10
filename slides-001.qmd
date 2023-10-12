@@ -3,8 +3,8 @@ title: "Redes Neurais"
 subtitle: "Primeiras Noções"
 author: Fernando Náufel
 institute: RCN, UFF
-date: 03 09 2023
-date-modified: 03 09 2023
+date: 12 10 2023
+date-modified: 12 10 2023
 date-format: DD/MM/YYYY
 
 filters:
@@ -92,7 +92,7 @@ Playlist em <https://youtu.be/jJb2qytbcNg> (com os autores):
 
 * História
 
-* Rede neural de uma camada
+* Rede neural com uma camada oculta
 
 * Terminologia
 
@@ -119,16 +119,16 @@ Playlist em <https://youtu.be/jJb2qytbcNg> (com os autores):
   * $\ldots$
 
 
-## Rede neural de uma camada
+## Rede neural com uma camada oculta
 
-![](images/uma-camada.png){fig-alt="Rede neural de uma camada" .r-stretch fig-align="center"}
+![](images/uma-camada.png){fig-alt="Rede neural com uma camada oculta" .r-stretch fig-align="center"}
 
 :::{.attribution}
 Imagem: @james21:_introd_statis_learn
 :::
 
 
-## Rede neural de uma camada {.smaller}
+## Rede neural com uma camada oculta {.smaller}
 
 :::::{.columns .nomarker}
 
@@ -136,7 +136,7 @@ Imagem: @james21:_introd_statis_learn
 
 <div style='height: 50px'></div>
 
-![](images/uma-camada.png){fig-alt="Rede neural de uma camada"}
+![](images/uma-camada.png){fig-alt="Rede neural com uma camada oculta"}
 
 ::::
 
@@ -171,7 +171,7 @@ Imagem: @james21:_introd_statis_learn
 :::::
 
 
-## Rede neural de uma camada {.smaller}
+## Rede neural com uma camada oculta {.smaller}
 
 :::::{.columns .nomarker}
 
@@ -179,7 +179,7 @@ Imagem: @james21:_introd_statis_learn
 
 <div style='height: 50px'></div>
 
-![](images/uma-camada.png){fig-alt="Rede neural de uma camada"}
+![](images/uma-camada.png){fig-alt="Rede neural com uma camada oculta"}
 
 ::::
 
@@ -220,7 +220,7 @@ Imagem: @james21:_introd_statis_learn
 :::::
 
 
-## Rede neural de uma camada {.smaller}
+## Rede neural com uma camada oculta {.smaller}
 
 :::::{.columns .nomarker}
 
@@ -228,7 +228,7 @@ Imagem: @james21:_introd_statis_learn
 
 <div style='height: 50px'></div>
 
-![](images/uma-camada.png){fig-alt="Rede neural de uma camada"}
+![](images/uma-camada.png){fig-alt="Rede neural com uma camada oculta"}
 
 ::::
 
@@ -330,7 +330,7 @@ $$
 :::::
 
 
-## ReLU aproxima funções não-lineares
+## Combinação de ReLUs aproxima funções não-lineares
 
 :::{.r-stack}
 

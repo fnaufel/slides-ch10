@@ -20,11 +20,12 @@ library(tfruns)
 # )
 
 flags_list <- list(
-  optimizer = c('rmsprop', 'adam'),
-  learning_rate = c(0.001, 0.005),
-  momentum = c(0.01),
-  batch_size = c(64),
-  epochs = c(3000)
+  size1 = c(200, 400, 600),
+  optimizer = c('rmsprop'),
+  learning_rate = c(0.001),
+  momentum = c(0.1),
+  batch_size = c(201),
+  epochs = c(1500)
 )
 
 execs <- tuning_run(
